@@ -52,7 +52,7 @@ module Text.Peggy.Prim (
 
 import Control.Applicative
 import Control.Monad.ST
-import Control.Monad.Error
+import Control.Monad.Except
 import Data.Char
 import Data.HashTable.ST.Basic as HT
 import qualified Data.ListLike as LL
