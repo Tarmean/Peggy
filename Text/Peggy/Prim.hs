@@ -102,8 +102,6 @@ data ParseError
   = ParseError SrcLoc String
   deriving (Show)
 
-instance Error ParseError
-
 nullError :: ParseError
 nullError = ParseError (LocPos $ SrcPos "" 0 1 1) ""
 

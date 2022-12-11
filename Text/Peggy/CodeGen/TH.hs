@@ -60,7 +60,7 @@ generate defs = do
   defTbl tblTypName tblDatName = do
     s <- newName "s"
     str <- newName "str"
-    dataD (cxt []) tblTypName [PlainTV str, PlainTV s] Nothing [con s str] []
+    dataD (cxt []) tblTypName [PlainTV str (), PlainTV s ()] Nothing [con s str] []
     where
       con s str = recC tblDatName $ map toMem defs where
         toMem (Definition nont typ _) = do
@@ -103,7 +103,7 @@ generate defs = do
       str <- newName "str"
       s <- newName "s"
       sigD (mkName name) $
-          forallT [PlainTV str, PlainTV s]
+          forallT [PlainTV str SpecifiedSpec, PlainTV s SpecifiedSpec]
                   (cxt [classP ''LL.ListLike [varT str, conT ''Char]]) $
           conT ''Parser `appT`
           (conT tblName `appT` varT str) `appT`
